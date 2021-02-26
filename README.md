@@ -32,7 +32,7 @@ MAU RE-UPLOAD SCRIPT? KASIH LINK GTIHUB SAYA DAN MHANKBARBAR
 > git clone https://github.com/HAFizh-15/leyscoders-api/
 > cd leyscoders-api
 > bash install.sh
-> node index js
+> node -r fs.promises index js
 > scan qr
 
 ```
