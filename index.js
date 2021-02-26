@@ -138,7 +138,6 @@ runtime = process.uptime()
 - ${prefix}okezone
 - ${prefix}antara
 - ${prefix}berita
-- ${prefix}otakunews
 - ${prefix}wattpad [query]
 - ${prefix}kiryuu
 - ${prefix}hitler [@tagmember]
@@ -149,8 +148,7 @@ runtime = process.uptime()
 - ${prefix}togif [reply sticker]
 - ${prefix}igstalk [@username]`, MessageType.text, {quoted: freply})
 					break
-	case 'sephia':
-					
+				case 'sephia':
 					if (args.length < 1)return reply('Tag Orangnya')
 					reply(mess.wait)
 					var imgbb = require('imgbb-uploader')
@@ -164,25 +162,15 @@ runtime = process.uptime()
 					client.sendMessage(from, wtd, image, {quoted: mek, caption: mess.success})
 					break
 				case 'wattpad':
-				data = await fetchJson(`https://leyscoders-api.herokuapp.com/api/wattpad-search?q=${body.slice(9)}&apikey=${apikey}`)
-				      teks = `*「 WATTPAD 」*\n\n*Hasil Pencarian : ${body.slice(9)}*\n─────────────\n\n`
+					data = await fetchJson(`https://leyscoders-api.herokuapp.com/api/wattpad-search?q=${body.slice(9)}&apikey=${apikey}`)
+				        teks = `*「 WATTPAD 」*\n\n*Hasil Pencarian : ${body.slice(9)}*\n─────────────\n\n`
 					for (let i of data.result) {
 					teks += `➸ *Title* : ${i.title}\n➸ *ID* : ${i.id}\n➸ *Link* : ${i.url}\n\n─────────────\n\n`
 					}
 					buff = await getBuffer(data.result[0].thumb)
 					client.sendMessage(from, buff, image, {quoted: freply, caption: teks}) 	
 		  			break
-				 case 'otakunews':
-			data = await fetchJson(`https://leyscoders-api.herokuapp.com/api/otakunews?apikey=${apikey}`)
-			teks = `「 *OTAKUNEWS* 」\n\n─────────────\n\n`
-			for (let i of data.result) {
-			teks += `➸ *Title* : ${i.title}\n➸ *Link* : ${i.url}\n\n─────────────\n\n`
-			}
-		        buff = await getBuffer(data.result[0].img)
-	  	        client.sendMessage(from, buff, image, {quoted: freply, caption: teks}) 	
-		  break
-	case 'trash':
-					
+				case 'trash':
 					if (args.length < 1)return reply('Tag Orangnya')
 					reply(mess.wait)
 					var imgbb = require('imgbb-uploader')
@@ -195,10 +183,8 @@ runtime = process.uptime()
 					wtd = await getBuffer(`https://leyscoders-api.herokuapp.com/api/img/trash?url=${data.display_url}&apikey=freeKeY`)
 					client.sendMessage(from, wtd, image, {quoted: mek, caption: mess.success})
 					break
-					case 'joke':
-					
+		       		case 'joke':
 					if (args.length < 1)return reply('Tag Orangnya')
-					reply(mess.wait)
 					var imgbb = require('imgbb-uploader')
 					ghost = mek.message.extendedTextMessage.contextInfo.mentionedJid[0] || from
 					pp = await client.getProfilePicture(ghost)
@@ -209,10 +195,8 @@ runtime = process.uptime()
 					wtd = await getBuffer(`https://leyscoders-api.herokuapp.com/api/img/joke?url=${data.display_url}&apikey=freeKeY`)
 					client.sendMessage(from, wtd, image, {quoted: mek, caption: mess.success})
 					break
-						case 'hitler':
-					
+		      		case 'hitler':
 					if (args.length < 1)return reply('Tag Orangnya')
-					reply(mess.wait)
 					var imgbb = require('imgbb-uploader')
 					ghost = mek.message.extendedTextMessage.contextInfo.mentionedJid[0] || from
 					pp = await client.getProfilePicture(ghost)
@@ -223,10 +207,8 @@ runtime = process.uptime()
 					wtd = await getBuffer(`http://leyscoders-api.herokuapp.com/api/img/hitler?url=${data.display_url}&apikey=${apikey}`)
 						client.sendMessage(from, wtd, image, {quoted: mek, caption: mess.success})
 					break
-					case 'deletetrash':
-					
+		   		 case 'deletetrash':
 					if (args.length < 1)return reply('Tag Orangnya')
-					reply(mess.wait)
 					var imgbb = require('imgbb-uploader')
 					ghost = mek.message.extendedTextMessage.contextInfo.mentionedJid[0] || from
 					pp = await client.getProfilePicture(ghost)
@@ -237,23 +219,8 @@ runtime = process.uptime()
 					wtd = await getBuffer(`https://leyscoders-api.herokuapp.com/api/img/delete?url=${data.display_url}&apikey=${apikey}`)
 					client.sendMessage(from, wtd, image, {quoted: mek, caption: mess.success})
 					break
-	case 'togif':
-				reply(mess.wait)
-					var imgbb = require('imgbb-uploader')
-					if ((isMedia && !mek.message.videoMessage || isQuotedSticker) && args.length == 0) {
-					ger = isQuotedSticker ? JSON.parse(JSON.stringify(tod).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-					owgi = await client.downloadAndSaveMediaMessage(ger)
-					data = await imgbb("acf1ad5f22ad5822dc163cce74aedfd4", owgi)
-					anu = await fetchJson(`https://leyscoders-api.herokuapp.com/api/webp-mp4?url=${data.display_url}&apikey=${apikey}`)
-						tog = await getBuffer(anu.result)
-					client.sendMessage(from, tog, video, {mimetype: 'video/gif', quoted: freply})
-					} else {
-						reply('Reply Stickernya')
-					}
-					break
-	case 'igstalk':
+		    		case 'igstalk':
 					if (args.length < 1) return reply('Masukan username nya')
-					reply(mess.wait)
 					anu = await fetchJson(`https://leyscoders-api.herokuapp.com/api/igstalk?user=${body.slice(9)}&apikey=${apikey}`)
 					if (anu.error) return reply(anu.error)
 					const ig = `User di temukan!!\n\n➸ *Username* : ${anu.result.username}\n➸ *Name* : ${anu.result.name}\n➸ *Followers* : ${anu.result.followers}\n➸ *Following* : ${anu.result.following}\n➸ *Postingan* : ${anu.result.postingan}\n➸ *Private* : ${anu.result.isPrivate}\n➸ *Verified* : ${anu.result.isVerified}\n➸ *Bussines* : ${anu.result.isBusiness}\n*➸ Recent* : ${anu.result.isRecent}\n➸ *Biodata* : \n${anu.result.desc}`
