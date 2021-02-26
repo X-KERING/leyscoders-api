@@ -132,6 +132,7 @@ runtime = process.uptime()
 - ${prefix}kuadrat [angka]
 - ${prefix}persegi [sisi]
 - ${prefix}kubik [angka]
+- ${prefix}kisahnabi [nama nabi]
 - ${prefix}detik
 - ${prefix}sindointer
 - ${prefix}sindonasional
@@ -147,7 +148,70 @@ runtime = process.uptime()
 - ${prefix}trash [@tagmember]
 - ${prefix}joke [@tagmember]
 - ${prefix}sephia [@tagmember]
+- ${prefix}affect [reply gambar]
+- ${prefix}picture [reply gambar]
+- ${prefix}wanted [reply gambar]
+- ${prefix}greyscale [reply gambar]
 - ${prefix}igstalk [@username]`, MessageType.text, {quoted: freply})
+					break
+	case 'affect':
+				reply(mess.wait)
+					var imgbb = require('imgbb-uploader')
+					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
+						const encmediia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+						
+							owgix = await client.downloadAndSaveMediaMessage(encmediia)
+					data = await imgbb("acf1ad5f22ad5822dc163cce74aedfd4", owgix)
+					toge = await getBuffer(`https://leyscoders-api.herokuapp.com/api/img/affect?url=${data.display_url}&apikey=${apikey}`)
+						//toge = await getBuffer(anu.message)
+					client.sendMessage(from, toge, image, {quoted: mek, caption: mess.success})
+					} else {
+						reply('Reply gambar nya coeg')
+					}
+					
+					break
+						case 'picture':
+				reply(mess.wait)
+					var imgbb = require('imgbb-uploader')
+					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
+						const encmediia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+						
+							owgix = await client.downloadAndSaveMediaMessage(encmediia)
+					data = await imgbb("acf1ad5f22ad5822dc163cce74aedfd4", owgix)
+					toge = await getBuffer(`https://leyscoders-api.herokuapp.com/api/img/picture?url=${data.display_url}&apikey=${apikey}`)
+					
+					client.sendMessage(from, toge, image, {quoted: mek, caption: mess.success})
+					} else {
+						reply('Reply gambar nya coeg')
+					}
+					break
+								case 'wanted':
+				reply(mess.wait)
+					var imgbb = require('imgbb-uploader')
+					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
+						const encmediia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+						
+							owgix = await client.downloadAndSaveMediaMessage(encmediia)
+					data = await imgbb("acf1ad5f22ad5822dc163cce74aedfd4", owgix)
+					toge = await getBuffer(`https://leyscoders-api.herokuapp.com/api/img/wanted?url=$data.display_url}&apikey=${apikey}`)
+					client.sendMessage(from, toge, image, {quoted: mek, caption: mess.success})
+					} else {
+						reply('Reply gambar nya coeg')
+					}
+					break
+						case 'greyscale':
+				reply(mess.wait)
+					var imgbb = require('imgbb-uploader')
+					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
+						const encmediia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+						
+							owgix = await client.downloadAndSaveMediaMessage(encmediia)
+					data = await imgbb("acf1ad5f22ad5822dc163cce74aedfd4", owgix)
+					anu = await getBuffer(`http://leyscoders-api.herokuapp.com/api/img/greyscale?url=${data.display_url}&apikey=${apikey}`)
+					client.sendMessage(from, anu, image, {quoted: mek, caption: mess.success})
+					} else {
+						reply('Reply gambar nya coeg')
+					}
 					break
 				case 'sephia':
 					if (args.length < 1)return reply('Tag Orangnya')
@@ -408,6 +472,13 @@ runtime = process.uptime()
 						reply(`𝗸𝗶𝗿𝗶𝗺 𝗴𝗮𝗺𝗯𝗮𝗿 𝗱𝗲𝗻𝗴𝗮𝗻 𝗰𝗮𝗽𝘁𝗶𝗼𝗻 ${prefix}𝘀𝘁𝗶𝗰𝗸𝗲𝗿 𝗮𝘁𝗮𝘂 𝗿𝗲𝗽𝗹𝘆/𝘁𝗮𝗴 𝗴𝗮𝗺𝗯𝗮𝗿`)
 					}
 					break
+		case 'kisahnabi':
+			bismillah = fs.readFileSync(`./src/kaligrafi.jpg`)
+			data = await fetchJson(`https://leyscoders-api.herokuapp.com/api/nabi?q=${body.slice(11)}&apikey=${apikey}`)
+			hepik = data.result
+		    teks = `➸ *Nama*: ${hepik.nama}\n➸ *Lahir*: ${hepik.lahir_pada}\n➸ *Umur:* ${hepik.umur}\n➸ *Tempat*: ${hepik.tempat}\n➸ *Kisah*: \n\n${hepik.kisah}`
+			client.sendMessage(from, bismillah, image, {quoted: mek, caption: teks})
+			break
 				case 'setprefix':
 					if (args.length < 1) return
 					if (!isOwner) return reply(mess.only.ownerB)
