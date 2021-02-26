@@ -139,7 +139,9 @@ runtime = process.uptime()
 - ${prefix}antara
 - ${prefix}berita
 - ${prefix}wattpad [query]
-- ${prefix}kiryuu`, MessageType.text, {quoted: freply})
+- ${prefix}kiryuu
+- ${prefix}apkpure [apk]
+- ${prefix}otakunews`, MessageType.text, {quoted: freply})
 					break
 				case 'wattpad':
 				data = await fetchJson(`https://leyscoders-api.herokuapp.com/api/wattpad-search?q=${body.slice(9)}&apikey=${apikey}`)
@@ -189,6 +191,24 @@ runtime = process.uptime()
 					break
 				case 'antara':
 					datas = await fetchJson(`https://leyscoders-api.herokuapp.com/api/antara-news?apikey=${apikey}`)
+					teks = '=================\n'
+					for (let i of datas.result) {
+						teks += `\n*Judul* : ${i.title}\n*Link* : ${i.url}\n=================\n`
+					}
+					buffs = await getBuffer(`${datas.result[0].img}`)
+					client.sendMessage(from, buffs, MessageType.image, {quoted: freply, caption: teks})
+					break
+				case 'otakunews':
+					datas = await fetchJson(`https://leyscoders-api.herokuapp.com/api/otakunews?apikey=${apikey}`)
+					teks = '=================\n'
+					for (let i of datas.result) {
+						teks += `\n*Judul* : ${i.title}\n*Link* : ${i.url}\n=================\n`
+					}
+					buffs = await getBuffer(`${datas.result[0].img}`)
+					client.sendMessage(from, buffs, MessageType.image, {quoted: freply, caption: teks})
+					break
+				case 'apkpure':
+					datas = await fetchJson(`https://leyscoders-api.herokuapp.com/api/apkpure?q=${body.slice(9)}&apikey={apikey}`)
 					teks = '=================\n'
 					for (let i of datas.result) {
 						teks += `\n*Judul* : ${i.title}\n*Link* : ${i.url}\n=================\n`
