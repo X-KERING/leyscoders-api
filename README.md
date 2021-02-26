@@ -1,5 +1,6 @@
-## <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Hi.gif" width="29px"> SOURCE CODE FOR https://leyscoders-api.herokuapp.com/
+## <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Hi.gif" width="29px"> SELFBOT
 <p align="center">
+ <h6>source code for https://leyscoders-api.herokuapp.com/</h6>
 <img src="https://media.giphy.com/media/836HiJc7pgzy8iNXCn/giphy.gif" width="320">
 </p>
 <br>
@@ -29,7 +30,6 @@ MAU RE-UPLOAD SCRIPT? KASIH LINK GTIHUB SAYA DAN MHANKBARBAR
 ## NOTE!!: NODEJS V14
 
 ### CARA INSTALLNYA
-Script ini di modifikasi sama saya dkk.
 ```bash
 > git clone https://github.com/HAFizh-15/leyscoders-api/
 > cd leyscoders-api
@@ -37,9 +37,7 @@ Script ini di modifikasi sama saya dkk.
 > node index js
 > scan qr
 
-NOTE: BISA DI RUN DI WINDOWS/LINUX (tidak hanya di termux)
 ```
-
 ## KLO MAU PAKAI JANGAN LUPA DI FORK YA NGAB
 
 # DONASI
