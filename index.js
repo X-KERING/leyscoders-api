@@ -137,7 +137,8 @@ runtime = process.uptime()
 - ${prefix}sindonasional
 - ${prefix}okezone
 - ${prefix}antara
-- ${prefix}berita`, MessageType.text, {quoted: freply})
+- ${prefix}berita
+- ${prefix}kiryuu`, MessageType.text, {quoted: freply})
 			break
 				case 'kubik':
 					data = await fetchJson(`https://leyscoders-api.herokuapp.com/api/bdr/kubik?q=${body.slice(7)}&apikey=freeKeY`)
@@ -156,6 +157,14 @@ runtime = process.uptime()
 					teks = '=================\n'
 					for (let i of datas.data) {
 						teks += `\n*Judul* : ${i.judul}\n*Link* : ${i.link}\n*Waktu:* ${i.waktu}\n*Type:* ${i.tipe}\n*Desc*: ${i.kutipan}\n=================\n`
+					}
+					client.sendMessage(from, teks, MessageType.text, {quoted: freply})
+					break
+				case 'kiryuu':
+					data = await fetchJson(`https://leyscoders-api.herokuapp.com/api/kiryuu?apikey=${apikey}`)
+					teks = '=================\n'
+					for (let i of data.result) {
+						teks += `\n*Link:* ${i.url}\n*Judul:* ${i.judul}\n=================\n`
 					}
 					client.sendMessage(from, teks, MessageType.text, {quoted: freply})
 					break
