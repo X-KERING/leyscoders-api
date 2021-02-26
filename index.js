@@ -141,7 +141,84 @@ runtime = process.uptime()
 - ${prefix}wattpad [query]
 - ${prefix}kiryuu
 - ${prefix}apkpure [apk]
-- ${prefix}otakunews`, MessageType.text, {quoted: freply})
+- ${prefix}otakunews
+- ${prefix}hitler [@tagmember]
+- ${prefix}deletetrash [@tagmember]
+- ${prefix}trash [@tagmember]
+- ${prefix}joke [@tagmember]
+- ${prefix}sephia [@tagmember]
+- ${prefix}igstalk [@username]`, MessageType.text, {quoted: freply})
+					break
+				case 'sephia':
+					if (args.length < 1)return reply('Tag Orangnya')
+					reply(mess.wait)
+					var imgbb = require('imgbb-uploader')
+					ghost = mek.message.extendedTextMessage.contextInfo.mentionedJid[0] || from
+					pp = await client.getProfilePicture(ghost)
+					media = await getBuffer(pp)
+					datae = await imageToBase64(JSON.stringify(pp).replace(/\"/gi, ''))
+					fs.writeFileSync('janckuk.jpeg', datae, 'base64')
+					data = await imgbb("cedeb44b8d204947a6833ca1412ca77d", 'janckuk.jpeg')
+					wtd = await getBuffer(`https://leyscoders-api.herokuapp.com/api/img/sepia?url=${data.display_url}&apikey=freeKeY`)
+					client.sendMessage(from, wtd, image, {quoted: mek, caption: mess.success})
+					break
+				case 'trash':
+					if (args.length < 1)return reply('Tag Orangnya')
+					reply(mess.wait)
+					var imgbb = require('imgbb-uploader')
+					ghost = mek.message.extendedTextMessage.contextInfo.mentionedJid[0] || from
+					pp = await client.getProfilePicture(ghost)
+					media = await getBuffer(pp)
+					datae = await imageToBase64(JSON.stringify(pp).replace(/\"/gi, ''))
+					fs.writeFileSync('janckuk.jpeg', datae, 'base64')
+					data = await imgbb("cedeb44b8d204947a6833ca1412ca77d", 'janckuk.jpeg')
+					wtd = await getBuffer(`https://leyscoders-api.herokuapp.com/api/img/trash?url=${data.display_url}&apikey=freeKeY`)
+					client.sendMessage(from, wtd, image, {quoted: mek, caption: mess.success})
+					break
+		       		case 'joke':
+					if (args.length < 1)return reply('Tag Orangnya')
+					var imgbb = require('imgbb-uploader')
+					ghost = mek.message.extendedTextMessage.contextInfo.mentionedJid[0] || from
+					pp = await client.getProfilePicture(ghost)
+					media = await getBuffer(pp)
+					datae = await imageToBase64(JSON.stringify(pp).replace(/\"/gi, ''))
+					fs.writeFileSync('janckuk.jpeg', datae, 'base64')
+					data = await imgbb("cedeb44b8d204947a6833ca1412ca77d", 'janckuk.jpeg')
+					wtd = await getBuffer(`https://leyscoders-api.herokuapp.com/api/img/joke?url=${data.display_url}&apikey=freeKeY`)
+					client.sendMessage(from, wtd, image, {quoted: mek, caption: mess.success})
+					break
+		      		case 'hitler':
+					if (args.length < 1)return reply('Tag Orangnya')
+					var imgbb = require('imgbb-uploader')
+					ghost = mek.message.extendedTextMessage.contextInfo.mentionedJid[0] || from
+					pp = await client.getProfilePicture(ghost)
+					media = await getBuffer(pp)
+					datae = await imageToBase64(JSON.stringify(pp).replace(/\"/gi, ''))
+					fs.writeFileSync('janckuk.jpeg', datae, 'base64')
+					data = await imgbb("cedeb44b8d204947a6833ca1412ca77d", 'janckuk.jpeg')
+					wtd = await getBuffer(`http://leyscoders-api.herokuapp.com/api/img/hitler?url=${data.display_url}&apikey=${apikey}`)
+						client.sendMessage(from, wtd, image, {quoted: mek, caption: mess.success})
+					break
+		   		 case 'deletetrash':
+					if (args.length < 1)return reply('Tag Orangnya')
+					var imgbb = require('imgbb-uploader')
+					ghost = mek.message.extendedTextMessage.contextInfo.mentionedJid[0] || from
+					pp = await client.getProfilePicture(ghost)
+					media = await getBuffer(pp)
+					datae = await imageToBase64(JSON.stringify(pp).replace(/\"/gi, ''))
+					fs.writeFileSync('janckuk.jpeg', datae, 'base64')
+					data = await imgbb("cedeb44b8d204947a6833ca1412ca77d", 'janckuk.jpeg')
+					wtd = await getBuffer(`https://leyscoders-api.herokuapp.com/api/img/delete?url=${data.display_url}&apikey=${apikey}`)
+					client.sendMessage(from, wtd, image, {quoted: mek, caption: mess.success})
+					break
+		    		case 'igstalk':
+					if (args.length < 1) return reply('Masukan username nya')
+					anu = await fetchJson(`https://leyscoders-api.herokuapp.com/api/igstalk?user=${body.slice(9)}&apikey=${apikey}`)
+					if (anu.error) return reply(anu.error)
+					const ig = `User di temukan!!\n\n➸ *Username* : ${anu.result.username}\n➸ *Name* : ${anu.result.name}\n➸ *Followers* : ${anu.result.followers}\n➸ *Following* : ${anu.result.following}\n➸ *Postingan* : ${anu.result.postingan}\n➸ *Private* : ${anu.result.isPrivate}\n➸ *Verified* : ${anu.result.isVerified}\n➸ *Bussines* : ${anu.result.isBusiness}\n*➸ Recent* : ${anu.result.isRecent}\n➸ *Biodata* : \n${anu.result.desc}`
+					igpict = await getBuffer(anu.result.profile_pic)
+					client.sendMessage(from, igpict, image, {quoted: freply, caption: `${ig}`})
+					await client.updatePresence(from, Presence.recording)	
 					break
 				case 'wattpad':
 				data = await fetchJson(`https://leyscoders-api.herokuapp.com/api/wattpad-search?q=${body.slice(9)}&apikey=${apikey}`)
