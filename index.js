@@ -138,9 +138,18 @@ runtime = process.uptime()
 - ${prefix}okezone
 - ${prefix}antara
 - ${prefix}berita
+- ${prefix}wattpad
 - ${prefix}kiryuu`, MessageType.text, {quoted: freply})
 			break
-				case 'kubik':
+case 'wattpad':
+			data = await fetchJson(`https://leyscoders-api.herokuapp.com/api/wattpad-search?q=${body.slice(9)}&apikey=freeKeY`)
+		 teks = `*「 WATTPAD 」*\n\n*Hasil Pencarian : ${body.slice(9)}*\n─────────────\n\n`
+					for (let i of data.result) {
+						teks += `➸ *Title* : ${i.title}\n➸ *ID* : ${i.id}\n➸ *Link* : ${i.url}\n\n─────────────\n\n`
+							}
+							buff = await getBuffer(data.result[0].thumb)
+		client.sendMessage(from, buff, image, {quoted: freply, caption: teks}) 	
+		  break				case 'kubik':
 					data = await fetchJson(`https://leyscoders-api.herokuapp.com/api/bdr/kubik?q=${body.slice(7)}&apikey=freeKeY`)
 					reply(`hasil: ${data.result}`)
 					break
