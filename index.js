@@ -132,7 +132,6 @@ runtime = process.uptime()
 - ${prefix}kuadrat [angka]
 - ${prefix}persegi [sisi]
 - ${prefix}kubik [angka]
-- ${prefix}kisahnabi [nama nabi]
 - ${prefix}detik
 - ${prefix}sindointer
 - ${prefix}sindonasional
@@ -154,8 +153,7 @@ runtime = process.uptime()
 - ${prefix}greyscale [reply gambar]
 - ${prefix}igstalk [@username]`, MessageType.text, {quoted: freply})
 					break
-	case 'affect':
-				reply(mess.wait)
+				case 'affect':
 					var imgbb = require('imgbb-uploader')
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						const encmediia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
@@ -170,47 +168,40 @@ runtime = process.uptime()
 					}
 					
 					break
-						case 'picture':
-				reply(mess.wait)
+				case 'picture':
 					var imgbb = require('imgbb-uploader')
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
-						const encmediia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-						
-							owgix = await client.downloadAndSaveMediaMessage(encmediia)
+					const encmediia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+					owgix = await client.downloadAndSaveMediaMessage(encmediia)
 					data = await imgbb("acf1ad5f22ad5822dc163cce74aedfd4", owgix)
 					toge = await getBuffer(`https://leyscoders-api.herokuapp.com/api/img/picture?url=${data.display_url}&apikey=${apikey}`)
-					
 					client.sendMessage(from, toge, image, {quoted: mek, caption: mess.success})
 					} else {
-						reply('Reply gambar nya coeg')
+					reply('Reply gambar nya coeg')
 					}
 					break
-								case 'wanted':
-				reply(mess.wait)
+				case 'wanted':
 					var imgbb = require('imgbb-uploader')
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
-						const encmediia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-						
-							owgix = await client.downloadAndSaveMediaMessage(encmediia)
+					const encmediia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+					owgix = await client.downloadAndSaveMediaMessage(encmediia)
 					data = await imgbb("acf1ad5f22ad5822dc163cce74aedfd4", owgix)
 					toge = await getBuffer(`https://leyscoders-api.herokuapp.com/api/img/wanted?url=$data.display_url}&apikey=${apikey}`)
 					client.sendMessage(from, toge, image, {quoted: mek, caption: mess.success})
 					} else {
-						reply('Reply gambar nya coeg')
+					reply('Reply gambar nya coeg')
 					}
 					break
-						case 'greyscale':
-				reply(mess.wait)
+				case 'greyscale':
 					var imgbb = require('imgbb-uploader')
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
-						const encmediia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-						
-							owgix = await client.downloadAndSaveMediaMessage(encmediia)
+					const encmediia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+					owgix = await client.downloadAndSaveMediaMessage(encmediia)
 					data = await imgbb("acf1ad5f22ad5822dc163cce74aedfd4", owgix)
 					anu = await getBuffer(`http://leyscoders-api.herokuapp.com/api/img/greyscale?url=${data.display_url}&apikey=${apikey}`)
 					client.sendMessage(from, anu, image, {quoted: mek, caption: mess.success})
 					} else {
-						reply('Reply gambar nya coeg')
+					reply('Reply gambar nya coeg')
 					}
 					break
 				case 'sephia':
