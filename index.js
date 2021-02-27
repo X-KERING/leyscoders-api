@@ -142,6 +142,8 @@ runtime = process.uptime()
 - ${prefix}kiryuu
 - ${prefix}apkpure [apk]
 - ${prefix}otakunews
+- ${prefix}dewabatch
+- ${prefix}jadwalbola
 - ${prefix}hitler [@tagmember]
 - ${prefix}deletetrash [@tagmember]
 - ${prefix}trash [@tagmember]
@@ -221,8 +223,8 @@ runtime = process.uptime()
 					await client.updatePresence(from, Presence.recording)	
 					break
 				case 'wattpad':
-				data = await fetchJson(`https://leyscoders-api.herokuapp.com/api/wattpad-search?q=${body.slice(9)}&apikey=${apikey}`)
-				      teks = `*「 WATTPAD 」*\n\n*Hasil Pencarian : ${body.slice(9)}*\n─────────────\n\n`
+					data = await fetchJson(`https://leyscoders-api.herokuapp.com/api/wattpad-search?q=${body.slice(9)}&apikey=${apikey}`)
+				        teks = `*「 WATTPAD 」*\n\n*Hasil Pencarian : ${body.slice(9)}*\n─────────────\n\n`
 					for (let i of data.result) {
 					teks += `➸ *Title* : ${i.title}\n➸ *ID* : ${i.id}\n➸ *Link* : ${i.url}\n\n─────────────\n\n`
 					}
@@ -257,11 +259,28 @@ runtime = process.uptime()
 					}
 					client.sendMessage(from, teks, MessageType.text, {quoted: freply})
 					break
+				case 'jadwalbola':
+					data = await fetchJson(`https://leyscoders-api.herokuapp.com/api/jadwalbola?apikey=${apikey}`)
+					teks = '=================\n'
+					for (let i of data.result) {
+						teks += `\n*waktu:* ${i.waktu}\n*Kick Off:* ${i.kickoff}\n*Channel:* ${i.channel}\n=================\n`
+					}
+					client.sendMessage(from, teks, MessageType.text, {quoted: freply})
+					break
 				case 'berita':
 					datas = await fetchJson(`https://leyscoders-api.herokuapp.com/api/berita-news?apikey=${apikey}`)
 					teks = '=================\n'
 					for (let i of datas.result) {
 						teks += `\n*Judul* : ${i.title}\n*Link* : ${i.url}\n=================\n`
+					}
+					buffs = await getBuffer(`${datas.result[0].img}`)
+					client.sendMessage(from, buffs, MessageType.image, {quoted: freply, caption: teks})
+					break
+				case 'dewabatch':
+					datas = await fetchJson(`https://leyscoders-api.herokuapp.com/api/dewabatch?apikey=${apikey}`)
+					teks = '=================\n'
+					for (let i of datas.result) {
+						teks += `\n*Judul* : ${i.title}\n*Link* : ${i.url}\n*Desc:* ${i.desc}\n=================\n`
 					}
 					buffs = await getBuffer(`${datas.result[0].img}`)
 					client.sendMessage(from, buffs, MessageType.image, {quoted: freply, caption: teks})
