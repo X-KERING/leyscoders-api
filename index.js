@@ -270,7 +270,7 @@ runtime = process.uptime()
 					break
 				case 'igstalk':
 					if (args.length < 1) return reply('Masukan username nya')
-		    			anu = await fetchJson(`https://leyscoders-api.herokuapp.com/api/igstalk?user=${body.slice(9)}&apikey=freeKeY`)
+		    			anu = await fetchJson(`https://leyscoders-api.herokuapp.com/api/igstalk?user=${body.slice(9)}&apikey=${apikey}`)
 					if (anu.error) return reply(anu.error)
 					teks = `User di temukan!!\n\n➸ *Username* : ${anu.result[0].username}\n➸ *Name* : ${anu.result[0].fullName}\n➸ *Followers* : ${anu.result[0].follower}\n➸ *Following* : ${anu.result[0].following}\n➸ *Postingan* : ${anu.result[0].postsCount}\n➸ *Highlight* : ${anu.result[0].highlightCount}\n➸ *Private* : ${anu.result[0].isPrivate}\n➸ *Verified* : ${anu.result[0].isVerified}\n➸ *Bisnis* : ${anu.result[0].isBusinessAccount}\n➸ *Biodata* : \n${anu.result[0].biography}`
 					igpict = await getBuffer(anu.result[0].profilePic)
