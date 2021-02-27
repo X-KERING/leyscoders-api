@@ -268,14 +268,13 @@ runtime = process.uptime()
 					wtd = await getBuffer(`https://leyscoders-api.herokuapp.com/api/img/delete?url=${data.display_url}&apikey=${apikey}`)
 					client.sendMessage(from, wtd, image, {quoted: mek, caption: mess.success})
 					break
-		    		case 'igstalk':
+				case 'igstalk':
 					if (args.length < 1) return reply('Masukan username nya')
-					anu = await fetchJson(`https://leyscoders-api.herokuapp.com/api/igstalk?user=${body.slice(9)}&apikey=${apikey}`)
+		    			anu = await fetchJson(`https://leyscoders-api.herokuapp.com/api/igstalk?user=${body.slice(9)}&apikey=freeKeY`)
 					if (anu.error) return reply(anu.error)
-					const ig = `User di temukan!!\n\n➸ *Username* : ${anu.result.username}\n➸ *Name* : ${anu.result.name}\n➸ *Followers* : ${anu.result.followers}\n➸ *Following* : ${anu.result.following}\n➸ *Postingan* : ${anu.result.postingan}\n➸ *Private* : ${anu.result.isPrivate}\n➸ *Verified* : ${anu.result.isVerified}\n➸ *Bussines* : ${anu.result.isBusiness}\n*➸ Recent* : ${anu.result.isRecent}\n➸ *Biodata* : \n${anu.result.desc}`
-					igpict = await getBuffer(anu.result.profile_pic)
-					client.sendMessage(from, igpict, image, {quoted: freply, caption: `${ig}`})
-					await client.updatePresence(from, Presence.recording)	
+					teks = `User di temukan!!\n\n➸ *Username* : ${anu.result[0].username}\n➸ *Name* : ${anu.result[0].fullName}\n➸ *Followers* : ${anu.result[0].follower}\n➸ *Following* : ${anu.result[0].following}\n➸ *Postingan* : ${anu.result[0].postsCount}\n➸ *Highlight* : ${anu.result[0].highlightCount}\n➸ *Private* : ${anu.result[0].isPrivate}\n➸ *Verified* : ${anu.result[0].isVerified}\n➸ *Bisnis* : ${anu.result[0].isBusinessAccount}\n➸ *Biodata* : \n${anu.result[0].biography}`
+					igpict = await getBuffer(anu.result[0].profilePic)
+					client.sendMessage(from, igpict, image, {quoted: freply, caption: teks})
 					break
 				case 'wattpad':
 					data = await fetchJson(`https://leyscoders-api.herokuapp.com/api/wattpad-search?q=${body.slice(9)}&apikey=${apikey}`)
