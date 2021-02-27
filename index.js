@@ -143,6 +143,7 @@ runtime = process.uptime()
 - ${prefix}apkpure [apk]
 - ${prefix}otakunews
 - ${prefix}dewabatch
+- ${prefix}dewasearch [judul]
 - ${prefix}jadwalbola
 - ${prefix}hitler [@tagmember]
 - ${prefix}deletetrash [@tagmember]
@@ -332,6 +333,15 @@ runtime = process.uptime()
 					break
 				case 'dewabatch':
 					datas = await fetchJson(`https://leyscoders-api.herokuapp.com/api/dewabatch?apikey=${apikey}`)
+					teks = '=================\n'
+					for (let i of datas.result) {
+						teks += `\n*Judul* : ${i.title}\n*Link* : ${i.url}\n*Desc:* ${i.desc}\n=================\n`
+					}
+					buffs = await getBuffer(`${datas.result[0].img}`)
+					client.sendMessage(from, buffs, MessageType.image, {quoted: freply, caption: teks})
+					break
+				case 'dewasearch':
+					datas = await fetchJson(`https://leyscoders-api.herokuapp.com/api/dewabatch?q=${body.slice(12)}&apikey=${apikey}`)
 					teks = '=================\n'
 					for (let i of datas.result) {
 						teks += `\n*Judul* : ${i.title}\n*Link* : ${i.url}\n*Desc:* ${i.desc}\n=================\n`
