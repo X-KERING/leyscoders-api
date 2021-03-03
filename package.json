@@ -44,10 +44,10 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/HAFizh-15/leyscoders-api.git"
+    "url": "git+https://github.com/MhankBarBar/termux-wabot.git"
   },
   "bugs": {
-    "url": "https://github.com/HAFizh-15/leyscoders-api/issues"
+    "url": "https://github.com/MhankBarBar/termux-wabot/issues"
   },
-  "homepage": "https://github.com/HAFizh-15/leyscoders-api#readme"
+  "homepage": "https://github.com/MhankBarBar/termux-waboti#readme"
 }
