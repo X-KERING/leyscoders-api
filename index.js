@@ -154,7 +154,22 @@ runtime = process.uptime()
 - ${prefix}picture [reply gambar]
 - ${prefix}wanted [reply gambar]
 - ${prefix}greyscale [reply gambar]
-- ${prefix}igstalk [@username]`, MessageType.text, {quoted: freply})
+- ${prefix}igstalk [@username]
+- ${prefix}tahta [text]
+- ${prefix}quotemaker [text]
+- ${prefix}tsunami`, MessageType.text, {quoted: freply})
+					break
+				case 'tsunami':
+					data = await fetchJson(`https://leyscoders-api.herokuapp.com/api/info-tsunami?apikey=${apikey}`)
+					client.sendMessage(from, `Waktu: ${data.result.waktu}\nmagnitude: ${data.result.magnitude}\nKedalaman: ${data.result.Kedalaman}\nWilayah: ${data.result.Wilayah}\nkoordinat: ${data.result.koordinat}`, MessageType.text, {quoted: mek})
+					break
+				case 'quotemaker':
+					buffs = await getBuffer(`https://leyscoders-api.herokuapp.com/api/quote-maker?text=${body.slice(12)}&apikey=${apikey}`)
+					client.sendMessage(from, buffs, image, {quoted: mek})
+					break
+				case 'tahta':
+					buffs = await getBuffer(`https://leyscoders-api.herokuapp.com/api/harta-tahta?text=${body.slice(7)}&apikey=${apikey}`)
+					client.sendMessage(from, buffs, image, {quoted: mek})
 					break
 				case 'affect':
 					var imgbb = require('imgbb-uploader')
