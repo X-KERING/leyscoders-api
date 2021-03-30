@@ -22,9 +22,6 @@
  
 </details>
 
-### WARNING
-MAU RE-UPLOAD SCRIPT? KASIH LINK GTIHUB SAYA DAN MHANKBARBAR
-
 ## NOTE!!: NODEJS V14
 
 ### CARA INSTALLNYA
@@ -39,14 +36,12 @@ MAU RE-UPLOAD SCRIPT? KASIH LINK GTIHUB SAYA DAN MHANKBARBAR
 ## KLO MAU PAKAI JANGAN LUPA DI FORK YA NGAB
 
 # DONASI
-* [`Saweria`](https://saweria.co/HAFizhscript)
-* [`Ko-Fi`](https://ko-fi.com/shirayukibot)
-* [`TrakTeer`](https://trakteer.id/shirayuki)
+* [`TrakTeer`](https://trakteer.id/chizuru)
 
 
 ## SOSIAL MEDIA ADMIN
 
-* [`WhatsApp Admin `](https://wa.me/+6285959375675)
+* [`WhatsApp Admin `](https://wa.me/6285959375675)
 ## THANKS TO
 * [`MHANKBARBAR`](https://github.com/MhankBarBar/termux-wabot)
 
