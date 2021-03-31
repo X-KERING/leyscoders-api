@@ -1,4 +1,4 @@
-## <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Hi.gif" width="29px"> SELFBOT
+## <img src="https://github.com/TheDudeThatCode/TheDudeThatCode/blob/master/Assets/Hi.gif" width="29px"> SELF & PUBLIC BOT
 <p align="center">
  <h6>source code for https://leyscoders-api.herokuapp.com/</h6>
 <img src="https://media.giphy.com/media/836HiJc7pgzy8iNXCn/giphy.gif" width="320">
