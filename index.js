@@ -103,7 +103,12 @@ async function starts() {
 			const mentions = (teks, memberr, id) => {
 				(id == null || id == undefined || id == false) ? client.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : client.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": memberr}})
 			}
-
+			
+			//TIME
+                        const sleep = async (ms) => {
+    			return new Promise(resolve => setTimeout(resolve, ms));
+			}
+			
 			colors = ['red','white','black','blue','yellow','green']
 			const isMedia = (type === 'imageMessage' || type === 'videoMessage')
 			const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
@@ -156,7 +161,47 @@ runtime = process.uptime()
 - ${prefix}igstalk [@username]
 - ${prefix}tahta [text]
 - ${prefix}quotemaker [text]
-- ${prefix}tsunami`, MessageType.text, {quoted: freply})
+- ${prefix}tsunami
+- ${prefix}family100
+- ${prefix}tebakgambar
+- ${prefix}caklontong`, MessageType.text, {quoted: freply})
+					break
+				case 'tebakgambar':
+					data = await fetchJson(`https://leyscoders-api.herokuapp.com/api/tebak-gambar2?apikey=${apikey}`)
+					cbuff = await getBuffer(data.result.soal)
+					client.sendMessage(from, cbuff, image, {quoted: freply, caption: `Silahkan jawab soal berikut dengan benar\nwaktu: 30 detik`})
+					sleep(30000)
+					reply('30 detik tersisa')
+					sleep(20000)
+					reply('20 detik tersisa')
+					sleep(10000)
+					reply('10 detik tersisa')
+					sleep(10000)
+					reply(`jawaban: ${data.result.soal}`)
+					break
+				case 'family100':
+					data = await fetchJson(`https://leyscoders-api.herokuapp.com/api/family100?apikey=${apikey}`)
+					reply(`Silahkan jawab soal berikut dengan benar\n\n${data.result.soal}\nwaktu: 30 detik`)
+					sleep(30000)
+					reply('30 detik tersisa')
+					sleep(20000)
+					reply('20 detik tersisa')
+					sleep(10000)
+					reply('10 detik tersisa')
+					sleep(10000)
+					reply(`jawaban: ${data.result.soal}`)
+					break
+				case 'caklontong':
+					data = await fetchJson(`https://leyscoders-api.herokuapp.com/api/caklontong?apikey=${apikey}`)
+					reply(`Silahkan jawab soal berikut dengan benar\n\n${data.result.soal}\nwaktu: 30 detik`)
+					sleep(30000)
+					reply('30 detik tersisa')
+					sleep(20000)
+					reply('20 detik tersisa')
+					sleep(10000)
+					reply('10 detik tersisa')
+					sleep(10000)
+					reply(`jawaban: ${data.result.soal}`)
 					break
 				case 'tsunami':
 					data = await fetchJson(`https://leyscoders-api.herokuapp.com/api/info-tsunami?apikey=${apikey}`)
